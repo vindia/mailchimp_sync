@@ -16,11 +16,11 @@ Field      | Required | Description
 `username` | **Yes**  | The user's user name. If none is supplied, this will be generated from the email address.
 `title`    | No       | The user's title, e.g. _Vice President of Engineering_
 `groups`   | No       | A comma separated list of groups a user should be added to. When left empty, the user will not be added to any specific groups.
-`active`   | Yes      | Whether the user is active or not. Should be either true or false.
+`active`   | **Yes**  | Whether the user is active or not. Should be either true or false.
 
 ## Running it
 
     $ bundle install
     $ ruby mailchimp_sync.rb [/path/to/users.csv]
 
-The `/path/to/users.csv' argument is optional.
+The `/path/to/users.csv` argument is optional. If not supplied, the script will try to use a `users.csv` in the script root.
