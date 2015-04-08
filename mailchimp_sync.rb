@@ -16,17 +16,17 @@ lists = gibbon.lists.list['data'].map{|l| List.new(l['id'], l['name'])}
 CSV.foreach(csv_file, col_sep: ';', headers: true) do |user|
   puts "User: #{user['username']} #{user['name']} #{user['email']}"
   lists.each do |list|
-    begin 
+    begin
       gibbon.lists.update_member({
         id: list.id,
         email: { email: user['email'] },
         merge_vars: { MMERGE4: active_status(user['active']) }
       })
     rescue Gibbon::MailChimpError => error
-      puts "#{error.message} (#{list.name})"     
+      puts "#{error.message} (#{list.name})"
     else
       puts "Updated #{user['email']} in #{list.name}"
-    end 
+    end
   end
 end
 
